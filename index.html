@@ -91,3 +91,33 @@
       <a href="https://discord.gg/yNMVUTfrAe" target="_blank"><h1>Join Discord</h1></a>
         <button type="button" onclick="sendMessage()">Kirim Pesan</button>
     </form>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+      function sendMessage() {
+          // Ambil nilai pesan dari input
+          var message = document.getElementById('message').value;
+
+          // Kirim pesan ke server Discord (gunakan AJAX atau metode yang sesuai)
+          $.ajax({
+              type: 'POST',
+              url: 'https://discord.com/api/webhooks/1181605066596163655/AE8xQM4_RUwX7tAMmxFXQYsm6dLUiO9_kCkia69jxGVNWB-mQRSwZWitKNqBzH3MK-Tn',
+              contentType: 'application/json',
+              data: JSON.stringify({ content: message }),
+              success: function (data) {
+                  console.log('Pesan terkirim ke Discord!');
+              },
+              error: function (error) {
+                  console.error('Gagal mengirim pesan ke Discord:', error);
+              }
+          });
+      }
+    </script>
+
+  <script>
+    document.addEventListener('contextmenu', function(e) {
+      e.preventDefault();
+    });
+  </script>
+</body>
+</html>
